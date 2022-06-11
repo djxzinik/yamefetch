@@ -12,16 +12,20 @@ then
 fi
 if ! command -v neofetch &> /dev/null
 then
-    echo "<neofetch could not be found"
+    echo "neofetch could not be found"
     exit
 fi
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
-DIR="/img/"
+IMG="/img/"
+WAV="/wav/"
 FILES="waifu"
-QTTY=`ls ${SCRIPT_DIR}${DIR} | wc -l`
+AUDIOS="iiyada"
+QTTY1=`ls ${SCRIPT_DIR}${IMG} | wc -l`
+QTTY2=`ls ${SCRIPT_DIR}${WAV} | wc -l`
 RANDOM=$$
-ITEM=$(($RANDOM%$QTTY))
-IMG="${SCRIPT_DIR}${DIR}${FILES}${ITEM}"
-mplayer "${SCRIPT_DIR}/iiyada.wav" </dev/null > /dev/null 2>&1 &
+ITEM1=$(($RANDOM%$QTTY1))
+ITEM2=$(($RANDOM%$QTTY2))
+IMG="${SCRIPT_DIR}${IMG}${FILES}${ITEM1}"
+mplayer "${SCRIPT_DIR}${WAV}${AUDIOS}${ITEM2}.wav" </dev/null > /dev/null 2>&1 &
 neofetch --ascii $IMG | lolcat
