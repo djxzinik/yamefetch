@@ -10,9 +10,9 @@ then
     echo "lolcat could not be found"
     exit
 fi
-if ! command -v neofetch &> /dev/null
+if ! command -v fastfetch &> /dev/null
 then
-    echo "neofetch could not be found"
+    echo "fastfetch could not be found"
     exit
 fi
 
@@ -29,4 +29,4 @@ ITEM2=$(($RANDOM%$QTTY2))
 WAIFU="${WAIFU_DIR}${WAIFU_FILES[$ITEM1]}"
 IIYADA="${IIYADA_DIR}${IIYADA_FILES[$ITEM2]}"
 mplayer $IIYADA </dev/null > /dev/null 2>&1 &
-neofetch --ascii $WAIFU | lolcat
+fastfetch --logo $WAIFU | lolcat
